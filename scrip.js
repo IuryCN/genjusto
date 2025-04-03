@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     while (tentativa < 3) {
       idade = Number(prompt("📅 Antes de mais nada, qual é a sua idade?"));
 
-      if (idade >= 18 && idade <= 100) {
+      if (!isNaN(idade) && idade >= 18 && idade <= 100) {
         break;
       }
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (tentativa === 2) {
         alert("Última chance, BAKA! 😠");
       } else {
-        alert("Você falhou no Jutso... Agora ficou preso no Tsukuyomi Infinito do Itachi! 😵")
+        alert("Você falhou no Jutso... Agora ficou preso no Tsukuyomi Infinito do Itachi! 😵");
         alert("Encerrado!");
         return;
       }
@@ -79,11 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    let resultadoFinal = Object.keys(personagens).reduce((a, b) =>
-      personagens[a] > personagens[b] ? a : b
-    );
+    let resultadoFinal = Object.entries(personagens).sort((a, b) => b[1] - a[1])[0][0];
 
     alert(`Seu personagem é: ${resultadoFinal}! 😱`);
   };
-
 });
+
